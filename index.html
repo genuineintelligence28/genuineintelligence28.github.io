@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Genuine Intelligence 28 | Coming Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+    :root {
+      --gold: #E6B800; /* Royal premium gold */
+      --gold-light: #FFD700; /* Highlight gold */
+      --black: #050505; /* Deeper matte black */
+      --glass-bg: rgba(230, 184, 0, 0.10);
+      --glass-border: rgba(255, 215, 0, 0.22);
+      --text-glow: 0 0 2px #FFD700;
+      --text-glow-strong: 0 0 8px #FFD700;
+      --shadow-glow: 0 0 10px #FFD700;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--gold);
+      min-height: 100vh;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .background-glass {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: linear-gradient(135deg, #050505 60%, #FFD700 100%);
+      z-index: -1;
+      backdrop-filter: saturate(180%) blur(28px);
+    }
+
+    .page-container {
+      max-width: 720px;
+      margin: 48px auto 64px;
+      padding: 0 20px;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 3.8rem;
+      letter-spacing: 0.15em;
+      text-shadow: var(--text-glow);
+      user-select: none;
+      transition: text-shadow 0.4s ease, transform 0.4s ease;
+    }
+    .logo-text:hover {
+      text-shadow: 0 0 12px #FFD700;
+      transform: scale(1.03);
+    }
+
+    .highlight {
+      color: var(--black);
+      background: linear-gradient(145deg, var(--gold), var(--gold-light));
+      padding: 8px 20px;
+      border-radius: 14px;
+      margin-left: 12px;
+      box-shadow: 0 0 10px 2px #FFD700;
+      transition: transform 0.3s ease, box-shadow 0.4s ease;
+    }
+    .highlight:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 16px 6px #FFD700;
+    }
+
+    .subtext {
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-top: 12px;
+      color: var(--gold-light);
+      opacity: 0.85;
+      user-select: none;
+      letter-spacing: 0.03em;
+    }
+
+    /* Box common styles */
+    .box {
+      background: var(--glass-bg);
+      border-radius: 24px;
+      border: 2px solid var(--glass-border);
+      box-shadow: var(--shadow-glow);
+      backdrop-filter: saturate(200%) blur(20px);
+      padding: 36px 42px;
+      margin-bottom: 48px;
+      transition: background-color 0.35s ease, box-shadow 0.4s ease, transform 0.4s ease;
+      user-select: none;
+    }
+    .box:hover {
+      background: rgba(255, 215, 0, 0.18);
+      box-shadow: 0 0 20px 5px #FFD700;
+      transform: translateY(-4px);
+    }
+
+    /* Developer & Logo - Figure style */
+    .box figure {
+      margin: 0 auto 22px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 12px 3px #FFD700;
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+    .box figure:hover {
+      box-shadow: 0 0 20px 6px #cba135aa;
+      transform: scale(1.08);
+    }
+    .box figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* figcaption */
+    .box figure figcaption {
+      margin-top: 14px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      text-shadow: var(--text-glow);
+    }
+
+    /* About box title */
+    .about-box h2 {
+      margin: 0 0 18px 0;
+      font-weight: 700;
+      font-size: 2rem;
+      text-align: center;
+      color: var(--gold);
+      text-shadow: var(--text-glow-strong);
+    }
+
+    /* Text in boxes */
+    .box p {
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--gold-light);
+      opacity: 0.88;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      user-select: text;
+    }
+
+    /* Countdown Timer */
+    .countdown-box h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 24px;
+      text-align: center;
+      color: var(--gold);
+      text-shadow: var(--text-glow-strong);
+    }
+
+    #timer {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+    }
+    .time-block {
+      background: var(--black);
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 22px 28px;
+      width: 110px;
+      box-shadow: 0 0 10px #FFD700;
+      transition: all 0.35s ease;
+      cursor: default;
+      user-select: none;
+      text-align: center;
+    }
+    .time-block:hover {
+      box-shadow: 0 0 20px 6px #FFD700;
+      transform: translateY(-6px) scale(1.05);
+    }
+    .time-block span {
+      display: block;
+      color: var(--gold-light);
+    }
+    #days, #hours, #minutes, #seconds {
+      font-weight: 900;
+      font-size: 3.6rem;
+      text-shadow: var(--text-glow-strong);
+    }
+    .label {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-top: 6px;
+      user-select: none;
+    }
+
+    /* Social Links */
+    .social-box h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      text-align: center;
+      color: var(--gold);
+      text-shadow: var(--text-glow-strong);
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--gold);
+      border-radius: 28px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 10px #FFD700;
+      background: transparent;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      user-select: none;
+      cursor: pointer;
+      filter: drop-shadow(0 0 3px #FFD700);
+    }
+    .social-links a:hover {
+      background: linear-gradient(145deg, var(--gold), var(--gold-light));
+      color: var(--black);
+      box-shadow: 0 0 24px 8px #cba135cc;
+      transform: translateY(-3px);
+    }
+    .social-links svg {
+      width: 28px;
+      height: 28px;
+      fill: var(--gold);
+      transition: fill 0.35s ease;
+    }
+    .social-links a:hover svg {
+      fill: var(--black);
+    }
+
+    /* Footer */
+    footer {
+      user-select: none;
+      color: #e4c87acc;
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 68px;
+      letter-spacing: 0.2em;
+      filter: drop-shadow(0 0 2px #e4c87acc);
+    }
+
+    /* Responsive */
+    @media (max-width: 690px) {
+      .page-container {
+        margin: 32px auto 48px;
+        padding: 0 16px;
+      }
+      .box {
+        padding: 24px 28px;
+        margin-bottom: 36px;
+      }
+      .header-section {
+        margin-bottom: 36px;
+      }
+      .logo-text {
+        font-size: 2.8rem;
+      }
+      .highlight {
+        padding: 6px 16px;
+        margin-left: 8px;
+        font-size: 1.2rem;
+      }
+      .about-box h2, .countdown-box h2, .social-box h2 {
+        font-size: 1.6rem;
+      }
+      #timer {
+        gap: 22px;
+        flex-wrap: wrap;
+      }
+      .time-block {
+        width: 95px;
+        padding: 18px 18px;
+        margin-bottom: 12px;
+      }
+      #days, #hours, #minutes, #seconds {
+        font-size: 2.8rem;
+      }
+      .label {
+        font-size: 0.85rem;
+      }
+      .social-links {
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .social-links a {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+        gap: 6px;
+      }
+      .social-links svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .page-container {
+        margin: 20px auto 32px;
+      }
+      
+      .logo-text {
+        font-size: 2.3rem;
+      }
+      .highlight {
+        font-size: 1rem;
+        padding: 5px 12px;
+      }
+      .about-box h2, .countdown-box h2, .social-box h2 {
+        font-size: 1.3rem;
+      }
+      .time-block {
+        width: 80px;
+        padding: 14px 12px;
+      }
+      #days, #hours, #minutes, #seconds {
+        font-size: 2rem;
+      }
+      .label {
+        font-size: 0.75rem;
+      }
+      .social-links a {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+      .social-links svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-glass"></div>
+  <main class="page-container">
+
+    <header class="header-section">
+      <h1 class="logo-text">
+        Genuine Intelligence <span class="highlight">28</span>
+      </h1>
+      <p class="subtext">By Abrar & Mariya</p>
+    </header>
+
+    <section class="box developer-box">
+      <figure>
+        <img src="https://i.ibb.co/NdFhtRW7/IMG-20251101-130334.jpg" alt="Abrar Khan" />
+        <figcaption>Abrar Khan</figcaption>
+      </figure>
+      <p>
+        Passionate developer crafting sleek, intelligent digital experiences using 
+        modern web technologies & design principles.
+        The Developer and the founder of gi28.
+      </p>
+    </section>
+
+    <section class="box logo-box">
+      <figure>
+        <img src="https://i.ibb.co/NnJj0J4v/IMG-20251027-034846-960.webp" alt="Genuine Intelligence 28 Logo" />
+        <figcaption>Genuine Intelligence 28</figcaption>
+      </figure>
+      <p>
+        An upcoming platform delivering 100 Followers for 10rs only. launching soon. Pre-resister by following us. It may not be launch if we got, There's a very short list of coatumbers.
+      </p>
+    </section>
+
+    <section class="box about-box">
+      <p>
+        Meet Abrar Khan, The founder & The Developer of gi28.
+      </p>
+    </section>
+    <section class="box about-box">
+      <p>Meet Mariya Firdos, The Designer and The Moderator of this Platform.</p>
+    </section>
+    <section class="box about-box">
+      <p>Meet Imran Khan, The orders handler & well performer of gi28.</p>
+    </section>
+    <section class="box countdown-box">
+      <h2>Launching In</h2>
+      <div id="timer">
+        <div class="time-block">
+          <span id="days">00</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="time-block">
+          <span id="hours">00</span>
+          <span class="label">Hours</span>
+        </div> 
+        <div class="time-block">
+          <span id="minutes">00</span>
+          <span class="label">MINs</span>
+        </div>
+        <div class="time-block">
+          <span id="seconds">00</span>
+          <span class="label">SECs</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="box social-box">
+      <h2>Follow & Contact</h2>
+      <div class="social-links">
+        <a href="https://www.instagram.com/genuineintelligence28?igsh=NWZjdzZ1eGN5bmk1" target="_blank" aria-label="Instagram" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffd700" d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5a5.75 5.75 0 005.75-5.75v-8.5A5.75 5.75 0 0016.25 2h-8.5zm9 3a1 1 0 110 2 1 1 0 010-2zM12 8.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7zm0 2a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
+          Instagram
+        </a>
+        <a href="https://t.me/gi28official" target="_blank" aria-label="Telegram" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffd700" d="M22 3L2 12l7.6 3L11 21l3-6.8L22 3z"/></svg>
+          Telegram
+        </a>
+        <a href="https://wa.me/918637213741" target="_blank" aria-label="WhatsApp" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#ffd700" d="M20 6.5a8 8 0 01-13.8 5.67l-.85 2.91a.5.5 0 01-.98-.26l-.09-3.49a.5.5 0 01.82-.44l2.2 1.67a8.03 8.03 0 0112.7-5.07z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Genuine Intelligence 28</p>
+    </footer>
+
+  </main>
+
+  <script>
+    // Countdown Timer for Nov 7, 2025 12:00 PM
+    const launchDate = new Date("2025-11-07T12:00:00").getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const gap = launchDate - now;
+
+      let d = 0, h = 0, m = 0, s = 0;
+      if (gap > 0) {
+        d = Math.floor(gap / (1000 * 60 * 60 * 24));
+        h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+        s = Math.floor((gap % (1000 * 60)) / 1000);
+      }
+
+      document.getElementById('days').textContent = String(d).padStart(2, '0');
+      document.getElementById('hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
